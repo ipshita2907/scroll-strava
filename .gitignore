@@ -9,3 +9,7 @@
 # Temp preview/scratch files
 _*.html
 _*.png
+
+# local preview config
+.claude/
+index.html

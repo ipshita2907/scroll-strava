@@ -191,12 +191,12 @@ function drawCard(ctx, W, H, stats, meta) {
   const mult = curM / mark.h;
   const multStr = mult >= 10 ? Math.round(mult).toString() : mult.toFixed(1);
 
-  // Size the artwork + multiplier as one vertical group centered in the region,
-  // capped by the available height so they never overlap (esp. Square 1:1).
-  const multFont = Math.min(Math.round(W * 0.14), Math.round(regionH * 0.32));
+  // Size the artwork + multiplier as one vertical group centered in the region.
+  // The landmark is the hero: large and central, with the multiplier beneath.
+  const multFont = Math.min(Math.round(W * 0.11), Math.round(regionH * 0.22));
   const multCap = Math.round(multFont * 0.72);
-  const artBox = Math.min(Math.round(W * 0.3), Math.round(regionH * 0.52));
-  const groupGap = Math.round(W * 0.025);
+  const artBox = Math.min(Math.round(W * 0.54), Math.round(regionH * 0.74));
+  const groupGap = Math.round(W * 0.03);
   const groupH = artBox + groupGap + multCap;
   const groupTop = regionTop + (regionH - groupH) / 2;
   const artCenterY = groupTop + artBox / 2;
