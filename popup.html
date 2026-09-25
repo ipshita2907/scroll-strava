@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="popup.css" />
+    <title>Scroll Strava</title>
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="brand">
+          <img class="logo" src="icons/icon128.png" alt="Scroll Strava" />
+          <span class="title">Scroll Strava</span>
+        </div>
+        <div class="tabs">
+          <button class="tab is-active" data-range="today">Today</button>
+          <button class="tab" data-range="lifetime">All-time</button>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-label">Distance scrolled</div>
+        <div class="hero-value"><span id="distance">0</span><span class="hero-unit" id="distance-unit">m</span></div>
+        <div class="hero-sub" id="landmark">Warming up your thumb…</div>
+      </section>
+
+      <section class="stats">
+        <div class="stat">
+          <div class="stat-label">Moving time</div>
+          <div class="stat-value" id="time">0:00</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Pace</div>
+          <div class="stat-value" id="pace">–<span class="stat-unit">/km</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Thumb calories</div>
+          <div class="stat-value" id="calories">0<span class="stat-unit">kcal</span></div>
+        </div>
+      </section>
+
+      <section class="secondary">
+        <div class="chip"><span id="speed">0</span> px/s avg speed</div>
+        <div class="chip"><span id="flicks">0</span> flicks</div>
+      </section>
+
+      <button id="share" class="share-btn">📤 Share card</button>
+
+      <footer class="footer">
+        <button id="reset" class="reset">Reset today</button>
+        <span class="footer-note" id="since"></span>
+      </footer>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

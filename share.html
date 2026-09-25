@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="share.css" />
+    <title>Scroll Strava — Share</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="controls">
+        <div class="seg" id="range-seg">
+          <button class="seg-btn is-active" data-range="today">Today</button>
+          <button class="seg-btn" data-range="lifetime">All-time</button>
+        </div>
+        <div class="seg" id="format-seg">
+          <button class="seg-btn is-active" data-format="story">Story 9:16</button>
+          <button class="seg-btn" data-format="square">Square 1:1</button>
+        </div>
+      </div>
+
+      <div class="canvas-stage">
+        <canvas id="card"></canvas>
+      </div>
+
+      <div class="actions">
+        <button id="download" class="btn btn-primary">↓ Download PNG</button>
+        <button id="copy" class="btn">⧉ Copy image</button>
+      </div>
+      <p class="hint" id="hint">Drop it straight into your Instagram story.</p>
+    </div>
+    <script src="share.js"></script>
+  </body>
+</html>

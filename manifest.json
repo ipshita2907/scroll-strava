@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Scroll Strava",
+  "version": "1.0.0",
+  "description": "Track your scrolling like a workout — distance, time, pace, and thumb calories. Your daily doomscroll, quantified.",
+  "permissions": ["storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Scroll Strava"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
