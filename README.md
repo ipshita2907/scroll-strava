@@ -34,6 +34,44 @@ This extension isn't on the Chrome Web Store — you install it directly (takes 
 Toggle between **Today** and **All-time** in the popup. "Reset today" clears the
 current day.
 
+## How the numbers are measured
+
+The core measurement is **on-screen scroll distance converted to physical
+distance** using the CSS pixel standard:
+
+```
+METERS_PER_PIXEL = 0.0254 / 96  ≈ 0.0002646 m per pixel
+```
+
+- The web standard defines **96 CSS pixels = 1 inch = 0.0254 m**, so every
+  scrolled pixel counts as ~0.26 mm of travel.
+- **Distance** = `pixels_scrolled × 0.0002646` → shown in **m**, or **km** past 1000 m.
+- In practice it takes **~3,780 px to equal 1 meter** (`1 ÷ 0.0002646`). A typical
+  screenful is ~800–1000 px, so roughly **4 full screen-scrolls ≈ 1 meter**.
+
+Pixels are measured as the actual change in scroll position of the page (or any
+inner scroll container), so wheel, trackpad, keyboard, and touch all count.
+
+The other metrics:
+
+| Metric | How it's calculated |
+| --- | --- |
+| **Moving time** | Milliseconds spent *actively* scrolling. Scrolls within 1 s of each other count as continuous; a gap > 1 s ends the burst. |
+| **Pace** | Strava-style **minutes per km**: `moving_time ÷ distance_in_km`. |
+| **Avg speed** | `pixels ÷ active_seconds` (px/s). |
+| **Flicks** | Count of distinct scroll bursts (a new one each time you resume after a > 1 s pause). |
+| **Thumb calories** | Deliberately playful, *not* physical: `pixels × 0.000012 kcal`, tuned so a heavy day (~500k px) ≈ 6 kcal. |
+| **Landmark comparison** | Each landmark has a real-world height in metres (Statue of Liberty 93 m, Eiffel 330 m, Burj Khalifa 828 m, Everest 8,848 m …); the card shows how many times over you've scrolled it. |
+
+So **distance, pace, and speed are physically grounded** (via the 96 px/inch
+standard), **thumb calories are a joke metric**, and time and flicks are
+behavioral. The constants live at the top of [`popup.js`](popup.js) and
+[`share.js`](share.js) if you want to tune them.
+
+> Note: because scroll *distance* is tiny relative to *time*, the **pace** number
+> comes out large (e.g. `223:31 /km`) — it reads as a tongue-in-cheek "you're slow"
+> stat rather than a realistic running pace.
+
 ## Share card 📤
 
 Click **Share card** in the popup to open a full-resolution, Strava-style
