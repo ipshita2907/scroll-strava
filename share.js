@@ -41,13 +41,13 @@ function formatPace(px, ms) {
 // --- Landmark ladder data --------------------------------------------------
 // height in metres, short label, emoji glyph
 const LADDER = [
-  { h: 0.16, label: "Dollar bill", emoji: "💵", img: "assets/landmarks/dollar-bill.png" },
-  { h: 1.7, label: "A person", emoji: "🧍", img: "assets/landmarks/person.png" },
-  { h: 18, label: "Brachiosaurus", emoji: "🦕", img: "assets/landmarks/brachiosaurus.png" },
-  { h: 93, label: "Statue of Liberty", emoji: "🗽", img: "assets/landmarks/statue-of-liberty.png" },
-  { h: 330, label: "Eiffel Tower", emoji: "🗼", img: "assets/landmarks/eiffel-tower.png" },
-  { h: 828, label: "Burj Khalifa", emoji: "🏙️", img: "assets/landmarks/burj-khalifa.png" },
-  { h: 8848, label: "Mt. Everest", emoji: "🏔️", img: "assets/landmarks/everest.png" },
+  { h: 0.16, label: "Dollar bill", cap: "Taller than a dollar bill.", emoji: "💵", img: "assets/landmarks/dollar-bill.png" },
+  { h: 1.7, label: "A person", cap: "Taller than the average human.", emoji: "🧍", img: "assets/landmarks/person.png" },
+  { h: 18, label: "Brachiosaurus", cap: "Taller than a Brachiosaurus.", emoji: "🦕", img: "assets/landmarks/brachiosaurus.png" },
+  { h: 93, label: "Statue of Liberty", cap: "Taller than the Statue of Liberty.", emoji: "🗽", img: "assets/landmarks/statue-of-liberty.png" },
+  { h: 330, label: "Eiffel Tower", cap: "Taller than the Eiffel Tower.", emoji: "🗼", img: "assets/landmarks/eiffel-tower.png" },
+  { h: 828, label: "Burj Khalifa", cap: "Taller than the Burj Khalifa.", emoji: "🏙️", img: "assets/landmarks/burj-khalifa.png" },
+  { h: 8848, label: "Mt. Everest", cap: "Taller than Mt. Everest.", emoji: "🏔️", img: "assets/landmarks/everest.png" },
 ];
 
 // Optional custom artwork. If a PNG exists at the path above it replaces the
@@ -81,7 +81,7 @@ function captionFor(px) {
   if (m >= 8848) return "You out-scrolled Everest. Seek help. 🏔️";
   let passed = LADDER[0];
   for (const l of LADDER) if (m >= l.h) passed = l;
-  return `Taller than the ${passed.label}.`;
+  return passed.cap;
 }
 
 // --- Canvas drawing helpers ------------------------------------------------
@@ -221,7 +221,7 @@ function drawCard(ctx, W, H, stats, meta) {
   const cells = [
     { label: "MOVING TIME", value: formatTime(stats.activeMs || 0) },
     { label: "PACE", value: formatPace(px, stats.activeMs || 0) + " /km" },
-    { label: "THUMB CAL", value: (px * KCAL_PER_PIXEL >= 10 ? (px * KCAL_PER_PIXEL).toFixed(0) : (px * KCAL_PER_PIXEL).toFixed(1)) + " kcal" },
+    { label: "THUMB CALORIES", value: (px * KCAL_PER_PIXEL >= 10 ? (px * KCAL_PER_PIXEL).toFixed(0) : (px * KCAL_PER_PIXEL).toFixed(1)) + " kcal" },
     { label: "FLICKS", value: (stats.flicks || 0).toLocaleString() },
   ];
   const gap = Math.round(W * 0.03);
