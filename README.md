@@ -6,6 +6,21 @@ thumb calories — your daily doomscroll, quantified in a Strava-style card.
 Works on **every site, including Instagram web**, since it measures real scroll
 movement in the page rather than relying on any platform API.
 
+## Download & install
+
+This extension isn't on the Chrome Web Store — you install it directly (takes ~30 seconds):
+
+1. **Download it:**
+   - **Easiest:** grab the ZIP from the [latest release](https://github.com/ipshita2907/scroll-strava/releases/latest) and unzip it, **or**
+   - Click the green **Code ▾** button on the repo → **Download ZIP**, then unzip, **or**
+   - `git clone https://github.com/ipshita2907/scroll-strava.git`
+2. Open Chrome and go to `chrome://extensions`.
+3. Turn on **Developer mode** (toggle, top-right).
+4. Click **Load unpacked** and select the unzipped `scroll-strava` folder.
+5. Pin the icon, then scroll any page and click it to see your stats.
+
+> Chrome shows unpacked extensions with a "Developer mode" note — that's normal for extensions installed outside the Web Store. Everything runs **locally**; no data leaves your machine.
+
 ## Metrics
 
 - **Distance scrolled** — total on-screen scroll travel converted to real-world
@@ -47,13 +62,6 @@ Strava route map). Because the card background is near-black, strokes must be
 invisible. Export at 512×512 PNG with a transparent background, subject
 centered, and keep a consistent stroke weight across all seven so they read as
 a set.
-
-## Install (unpacked, developer mode)
-
-1. Open Chrome and go to `chrome://extensions`.
-2. Turn on **Developer mode** (top-right toggle).
-3. Click **Load unpacked** and select this `scroll-strava` folder.
-4. Pin the extension, then scroll any page and click the icon to see your stats.
 
 ## How it works
 
