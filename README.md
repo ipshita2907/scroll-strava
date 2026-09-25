@@ -81,3 +81,7 @@ Open `popup.js` and tweak:
 - `KCAL_PER_PIXEL` — how generous the thumb-calorie math is.
 - `LANDMARKS` — the distance comparison lines.
 - `METERS_PER_PIXEL` — the distance model (default is physically accurate).
+
+## License
+
+[MIT](LICENSE) — free to use, modify, and share.
